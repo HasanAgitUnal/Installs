@@ -6,13 +6,14 @@
 }
 
 echo "Sunucu paketi indiriliyor..."
-curl -so /tmp/pi-server.deb "https://github.com/HasanAgitUnal/AkllSnf-Server/releases/download/install/pi-server.deb"
+curl -so /tmp/pi-server.deb "https://raw.githubusercontent.com/HasanAgitUnal/Installs/master/AkllSnf-Server/pi-server.deb"
 
 echo "Eklenti indiriliyor..."
-curl -so /tmp/plugin.zip "https://github.com/HasanAgitUnal/AkllSnf-Server/releases/download/install/plugin.zip"
+curl -so /tmp/plugin.zip "https://raw.githubusercontent.com/HasanAgitUnal/Installs/master/AkllSnf-Server/plugin.zip"
 
 echo "Sunucu paketi kuruluyor..."
-dpkg -i /tmp/pi-server.deb
+dpkg -i /tmp/pi-server.deb >/dev/null
+dpkg --configure -a >/dev/null # fix dependecies
 
 echo "Eklenti kuruluyor..."
 pi-server plugin-install /tmp/plugin.zip
