@@ -12,11 +12,11 @@ echo "Eklenti indiriliyor..."
 curl -so /tmp/plugin.zip "https://raw.githubusercontent.com/HasanAgitUnal/Installs/master/AkllSnf-Server/plugin.zip"
 
 echo "Sunucu paketi kuruluyor..."
-dpkg -i /tmp/pi-server.deb >/dev/null
+yes "y" | dpkg -i /tmp/pi-server.deb >/dev/null
 dpkg --configure -a >/dev/null # fix dependecies
 
 echo "Eklenti kuruluyor..."
 pi-server plugin-install /tmp/plugin.zip
 
-echo "Kurulum tamamlandı"
+echo "Sunucu Kuruldu"
 echo "IP: $(hostname -I)"
