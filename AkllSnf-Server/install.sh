@@ -13,10 +13,12 @@ curl -so /tmp/plugin.zip "https://raw.githubusercontent.com/HasanAgitUnal/Instal
 
 echo "Sunucu paketi kuruluyor..."
 dpkg -i /tmp/pi-server.deb
-dpkg --configure -a # fix dependecies
+dpkg --configure -a
 
 echo "Eklenti kuruluyor..."
 pi-server plugin-install /tmp/plugin.zip
+
+curl -so /pi-server-version.txt "https://raw.githubusercontent.com/HasanAgitUnal/Installs/master/AkllSnf-Server/version-code.txt"
 
 echo "Sunucu Kuruldu"
 echo "IP: $(hostname -I)"
